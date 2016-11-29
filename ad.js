@@ -1,12 +1,17 @@
+﻿var home_domain = "blog.csdn.net";
 var ad_cnt = ad_cnt || 0;
+
 /*CSDN广告延迟加载 t:广告类型，数字；id:容器id*/
 var Ad = function (t, id) {
     this.adType = t;
     this.containerId = id;
+    this.adIndex = ad_cnt++;
 
+    this.loadAd = function () {
         //document.domain = "csdn.net";
 
         var container = document.getElementById(this.containerId);
+        var width = container.offsetWidth - 2 - container.style.paddingLeft - container.style.paddingRight;
         //var height = container.offsetHeight - 2 - container.style.paddingTop - container.style.paddingBottom;
 
         var frm = document.createElement('iframe');
